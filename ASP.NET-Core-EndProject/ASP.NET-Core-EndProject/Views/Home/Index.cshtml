@@ -1,0 +1,219 @@
+﻿@model HomeVM
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <!-- Background Area Start -->
+    <section id="slider-container" class="slider-area two">
+        <div class="slider-owl owl-theme owl-carousel">
+            <!-- Start Slingle Slide -->
+            @foreach (var slider in Model.Sliders)
+	{
+            <div class="single-slide item" style="background-image: url(assets/img/slider/@slider.Image)">
+                <!-- Start Slider Content -->
+                <div class="slider-content-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <div class="slide-content-wrapper">
+                                    <div class="slide-content text-center">
+                                        <h2>@slider.Title</h2>
+                                        <p>@slider.Description</p>
+                                        <a class="default-btn" asp-controller="About" asp-action="Index">Learn more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Start Slider Content -->
+            </div>
+	}
+            
+            <!-- End Slingle Slide -->
+        </div>
+    </section>
+    <!-- Background Area End -->
+    <!-- Service Start -->
+    <div class="service-area two pt-150 pb-150">
+        <div class="container">
+            <div class="row">
+                @foreach (var proTeacher in Model.ProTeachers)
+                {
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="single-service">
+                            <h3><a href="teacher.html">@proTeacher.Title</a></h3>
+                            <p>@proTeacher.Description</p>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+    <!-- About Start -->
+    <partial name="_AboutPartial" model="Model.Welcome" />
+    <!-- About End -->
+    <!-- Courses Area Start -->
+    <div class="courses-area two pt-150 pb-150 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="section-title">
+                        <img src="~/assets/img/icon/section1.png" alt="section-title">
+                        <h2>COURSES WE OFFER</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var course in Model.Courses.OrderByDescending(m=>m.Id).Take(3))
+                {
+                    <div class="col-md-4 hidden-sm col-xs-12">
+                        <div class="single-course">
+                            <div class="course-img">
+                                <a asp-controller="Course" asp-action="CourseDetails">
+                                    <img src="~/assets/img/course/@course.Image" alt="course">
+                                    <div class="course-hover">
+                                        <i class="fa fa-link"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="course-content">
+                                <h3><a href="course-details.html">@course.Title</a></h3>
+                                <p>@course.Description</p>
+                                <a class="default-btn" asp-controller="Course" asp-action="CourseDetails">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <!-- Courses Area End -->
+    <!-- Notice Start -->
+    <section class="notice-area two pt-140">
+        <div class="container">
+            <div class="row">
+                <partial name="_VideoPartial" model="Model.Video" />
+                <partial name="_NoticePartial" model="Model.NoticePanel" />
+            </div>
+        </div>
+    </section>
+    <!-- Notice End -->
+    <!-- Event Area Start -->
+    <div class="event-area two text-center pt-100 pb-145">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="section-title">
+                        <img src="~/assets/img/icon/section.png" alt="section-title">
+                        <h2>UPCOMMING EVENTS</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    @foreach (var events in Model.Events.Take(2))
+                    {
+                        <div class="single-event mb-35">
+
+                            <div class="event-img">
+                                <a href="event-details.html"><img src="~/assets/img/event/@events.Image" alt="event"></a>
+                            </div>
+                            <div class="event-content text-left">
+                                <h3>@events.Date</h3>
+                                <h4><a href="event-details.html">@events.Title</a></h4>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i>@events.Time</li>
+                                    <li><i class="fa fa-map-marker"></i>@events.Location</li>
+                                </ul>
+                                <div class="event-content-right">
+                                    <a class="default-btn" asp-controller="Event" asp-action="EventDetails">join now</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    @foreach (var events in Model.Events.Skip(2).Take(2))
+                    {
+                        <div class="single-event mb-35">
+
+                            <div class="event-img">
+                                <a href="event-details.html"><img src="~/assets/img/event/@events.Image" alt="event"></a>
+                            </div>
+                            <div class="event-content text-left">
+                                <h3>@events.Date</h3>
+                                <h4><a href="event-details.html">@events.Title</a></h4>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i>@events.Time</li>
+                                    <li><i class="fa fa-map-marker"></i>@events.Location</li>
+                                </ul>
+                                <div class="event-content-right">
+                                    <a class="default-btn" asp-controller="Event" asp-action="EventDetails">join now</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Event Area End -->
+    <!-- Testimonial Area Start -->
+    <partial name="_TestimonialPartial" model="Model.Testimonial" />
+    <!-- Testimonial Area End -->
+    <!-- Blog Area Start -->
+    <div class="blog-area pt-150 pb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="section-title text-center">
+                        <img src="~/assets/img/icon/section.png" alt="section-title">
+                        <h2>LATEST FROM BLOG</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var blog in Model.Blogs)
+                {
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="single-blog">
+                            <div class="blog-img">
+                                <a href="blog-details.html"><img src="~/assets/img/blog/@blog.Image" alt="blog"></a>
+                                <div class="blog-hover">
+                                    <a asp-controller="Blog" asp-action="BlogDetails"><i class="fa fa-link"></i></a>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-top">
+                                    <p>By @blog.From  /  @blog.Date  /  <i class="fa fa-comments-o"></i> @blog.CommentCount</p>
+                                </div>
+                                <div class="blog-bottom">
+                                    <h2><a asp-controller="Blog" asp-action="BlogDetails">@blog.Title </a></h2>
+                                    <a href="blog-details.html">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Blog Area End -->
+    <!-- Subscribe Start -->
+   
+    <!-- Subscribe End -->
+    <!-- Footer Start -->
+    
+
+

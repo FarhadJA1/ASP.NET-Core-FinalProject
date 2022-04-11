@@ -1,0 +1,20 @@
+﻿@model Welcome
+<div class="about-area pb-155">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="about-content">
+                    @Html.Raw(Model.Title)
+                    @Html.Raw(Model.Description)
+                    <p class="hidden-sm">I must explain to you how all this mistaken idea of denouncing pleure and prsing pain was born and I will give you a complete account of the system</p>
+                    <a class="default-btn" asp-controller="About" asp-action="Index">view courses</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="about-img">
+                    <img src="~/assets/img/about/@Model.Image" alt="about">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
