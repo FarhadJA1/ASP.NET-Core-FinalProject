@@ -4,14 +4,16 @@ using ASP.NET_Core_EndProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ASP.NET_Core_EndProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220412054058_UpdateEventsTable")]
+    partial class UpdateEventsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -126,9 +128,6 @@ namespace ASP.NET_Core_EndProject.Migrations
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
-
-                    b.Property<string>("PostImage")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -363,24 +362,6 @@ namespace ASP.NET_Core_EndProject.Migrations
                     b.ToTable("Settings");
                 });
 
-            modelBuilder.Entity("ASP.NET_Core_EndProject.Models.Skills", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Skills");
-                });
-
             modelBuilder.Entity("ASP.NET_Core_EndProject.Models.Slider", b =>
                 {
                     b.Property<int>("Id")
@@ -421,24 +402,6 @@ namespace ASP.NET_Core_EndProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SocNetworks");
-                });
-
-            modelBuilder.Entity("ASP.NET_Core_EndProject.Models.Tag", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("ASP.NET_Core_EndProject.Models.Teacher", b =>
@@ -536,21 +499,31 @@ namespace ASP.NET_Core_EndProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Communication")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Design")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Development")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Innovation")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Percent")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SkillsId")
+                    b.Property<int>("Language")
                         .HasColumnType("int");
 
                     b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<int>("TeamLeader")
+                        .HasColumnType("int");
 
-                    b.HasIndex("SkillsId");
+                    b.HasKey("Id");
 
                     b.HasIndex("TeacherId");
 
@@ -795,12 +768,6 @@ namespace ASP.NET_Core_EndProject.Migrations
 
             modelBuilder.Entity("ASP.NET_Core_EndProject.Models.TeacherSkills", b =>
                 {
-                    b.HasOne("ASP.NET_Core_EndProject.Models.Skills", "Skills")
-                        .WithMany("TeacherSkills")
-                        .HasForeignKey("SkillsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ASP.NET_Core_EndProject.Models.Teacher", "Teacher")
                         .WithMany("TeacherSkills")
                         .HasForeignKey("TeacherId")

@@ -27,6 +27,7 @@ namespace ASP.NET_Core_EndProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<LayoutService>();
+            services.AddScoped<SidebarService>();
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(options =>
             {

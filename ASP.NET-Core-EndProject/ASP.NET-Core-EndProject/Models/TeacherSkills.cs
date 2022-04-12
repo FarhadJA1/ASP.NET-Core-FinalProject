@@ -7,13 +7,10 @@ namespace ASP.NET_Core_EndProject.Models
 {
     public class TeacherSkills:BaseEntity
     {
-        public int Language { get; set; }
-        public int TeamLeader { get; set; }
-        public int Development { get; set; }
-        public int Design { get; set; }
-        public int Innovation { get; set; }
-        public int Communication { get; set; }
+        public int SkillsId { get; set; }
+        public Skills Skills { get; set; }
         public int TeacherId { get; set; }
         public Teacher Teacher { get; set; }
+        public int Percent { get; set; }
     }
 }

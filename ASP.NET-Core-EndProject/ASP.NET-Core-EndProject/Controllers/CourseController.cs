@@ -32,11 +32,17 @@ namespace ASP.NET_Core_EndProject.Controllers
         {
             Course course = await _context.Courses.Where(m=>m.Id==id).Include(m => m.CourseFeatures).FirstOrDefaultAsync();
             List<CourseCategory> courseCategories = await _context.CourseCategories.ToListAsync();
+            Advert advert = await _context.Adverts.FirstOrDefaultAsync();
+            List<Blog> blogs = await _context.Blogs.ToListAsync();
+            List<Tag> tags = await _context.Tags.ToListAsync();
 
             CourseDetailsVM courseDetailsVM = new CourseDetailsVM()
             {
                 Course=course,
                 CourseCategories=courseCategories,
+                Advert=advert,
+                Blogs=blogs,
+                Tags=tags,
             };
             return View(courseDetailsVM);
         }

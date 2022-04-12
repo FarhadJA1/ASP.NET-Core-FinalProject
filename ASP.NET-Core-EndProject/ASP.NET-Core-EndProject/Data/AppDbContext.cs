@@ -31,5 +31,8 @@ namespace ASP.NET_Core_EndProject.Data
         public DbSet<TeacherDetail> TeacherDetails { get; set; }
         public DbSet<CourseFeatures> CourseFeatures { get; set; }
         public DbSet<CourseCategory> CourseCategories { get; set; }
+        public DbSet<Advert> Adverts { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<Skills> Skills { get; set; }
     }
 }
