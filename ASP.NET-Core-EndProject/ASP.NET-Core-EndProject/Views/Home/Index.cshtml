@@ -122,17 +122,17 @@
                         <div class="single-event mb-35">
 
                             <div class="event-img">
-                                <a href="event-details.html"><img src="~/assets/img/event/@events.Image" alt="event"></a>
+                                <a asp-controller="Event" asp-action="EventDetails" asp-route-id="@events.Id"><img src="~/assets/img/event/@events.Image" alt="event"></a>
                             </div>
                             <div class="event-content text-left">
                                 <h3>@events.Date</h3>
-                                <h4><a href="event-details.html">@events.Title</a></h4>
+                                <h4><a asp-controller="Event" asp-action="EventDetails" asp-route-id="@events.Id">@events.Title</a></h4>
                                 <ul>
                                     <li><i class="fa fa-clock-o"></i>@events.Time</li>
                                     <li><i class="fa fa-map-marker"></i>@events.Location</li>
                                 </ul>
                                 <div class="event-content-right">
-                                    <a class="default-btn" asp-controller="Event" asp-action="EventDetails">join now</a>
+                                    <a class="default-btn" asp-controller="Event" asp-action="EventDetails" asp-route-id="@events.Id">join now</a>
                                 </div>
                             </div>
                         </div>
@@ -146,17 +146,17 @@
                         <div class="single-event mb-35">
 
                             <div class="event-img">
-                                <a href="event-details.html"><img src="~/assets/img/event/@events.Image" alt="event"></a>
+                                <a asp-controller="Event" asp-action="EventDetails" asp-route-id="@events.Id"><img src="~/assets/img/event/@events.Image" alt="event"></a>
                             </div>
                             <div class="event-content text-left">
                                 <h3>@events.Date</h3>
-                                <h4><a href="event-details.html">@events.Title</a></h4>
+                                <h4><a asp-controller="Event" asp-action="EventDetails" asp-route-id="@events.Id">@events.Title</a></h4>
                                 <ul>
                                     <li><i class="fa fa-clock-o"></i>@events.Time</li>
                                     <li><i class="fa fa-map-marker"></i>@events.Location</li>
                                 </ul>
                                 <div class="event-content-right">
-                                    <a class="default-btn" asp-controller="Event" asp-action="EventDetails">join now</a>
+                                    <a class="default-btn" asp-controller="Event" asp-action="EventDetails" asp-route-id="@events.Id">join now</a>
                                 </div>
                             </div>
                         </div>
@@ -181,14 +181,14 @@
                 </div>
             </div>
             <div class="row">
-                @foreach (var blog in Model.Blogs)
+                @foreach (var blog in Model.Blogs.Take(3))
                 {
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="single-blog">
                             <div class="blog-img">
-                                <a href="blog-details.html"><img src="~/assets/img/blog/@blog.Image" alt="blog"></a>
+                                <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@blog.Id"><img src="~/assets/img/blog/@blog.Image" alt="blog"></a>
                                 <div class="blog-hover">
-                                    <a asp-controller="Blog" asp-action="BlogDetails"><i class="fa fa-link"></i></a>
+                                    <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@blog.Id"><i class="fa fa-link"></i></a>
                                 </div>
                             </div>
                             <div class="blog-content">
@@ -196,8 +196,8 @@
                                     <p>By @blog.From  /  @blog.Date  /  <i class="fa fa-comments-o"></i> @blog.CommentCount</p>
                                 </div>
                                 <div class="blog-bottom">
-                                    <h2><a asp-controller="Blog" asp-action="BlogDetails">@blog.Title </a></h2>
-                                    <a href="blog-details.html">read more</a>
+                                    <h2><a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@blog.Id">@blog.Title </a></h2>
+                                    <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@blog.Id">read more</a>
                                 </div>
                             </div>
                         </div>

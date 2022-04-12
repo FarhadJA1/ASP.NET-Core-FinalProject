@@ -34,5 +34,7 @@ namespace ASP.NET_Core_EndProject.Data
         public DbSet<Advert> Adverts { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Skills> Skills { get; set; }
+        public DbSet<EventSpeaker> EventSpeakers { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
     }
 }

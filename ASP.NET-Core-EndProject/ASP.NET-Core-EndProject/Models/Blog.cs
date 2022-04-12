@@ -13,6 +13,7 @@ namespace ASP.NET_Core_EndProject.Models
         public string CommentCount { get; set; }
         public string Title { get; set; }
         public string PostImage { get; set; }
+        public string Description { get; set; }
 
     }
 }
