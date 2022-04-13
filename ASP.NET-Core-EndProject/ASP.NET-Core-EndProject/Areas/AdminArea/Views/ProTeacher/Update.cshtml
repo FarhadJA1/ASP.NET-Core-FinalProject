@@ -1,0 +1,33 @@
+﻿@model ProTeacher
+@{
+    ViewData["Title"] = "Update Slider";
+}
+
+<div class="container">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                
+                <form class="forms-sample mt-5" method="post" asp-action="Update">
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input class="form-control" asp-for="Title">
+                        <span class="text-danger" asp-validation-for="Title"></span>
+
+                        <label asp-for="Description"></label>
+                        <input class="form-control" asp-for="Description">
+                        <span class="text-danger" asp-validation-for="Description"></span>
+                    </div>
+                    <p class="text-warning mt-1 @(Model.IsDelete==true?"d-block":"d-none")">Deleted</p>
+                    <button type="submit" class="btn btn-outline-primary me-2">Submit</button>
+                    <button class="btn btn-light">
+                        <a asp-action="Index">Cancel</a>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

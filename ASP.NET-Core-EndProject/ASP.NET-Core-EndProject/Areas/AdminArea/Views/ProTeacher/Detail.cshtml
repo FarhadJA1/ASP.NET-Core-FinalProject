@@ -1,0 +1,17 @@
+﻿
+@model ProTeacher
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container">
+    <h1  style="color:navy">Professional Teacher Detail</h1>
+    <hr />
+    <h3 class="text-warning mt-5" style="font-weight:bolder;font-family:sans-serif">Title: <span style="color:grey;font-size:20px;font-weight:lighter">@Model.Title</span> </h3>
+    <hr />
+    <h3 class="text-warning mt-3" style="font-weight: bolder; font-family: sans-serif">Description: <span style="color: grey; font-size: 20px; font-weight: lighter">@Model.Description</span> </h3>
+
+
+    <a asp-action="Index" class="btn btn-outline-warning mt-3">Go back</a>
+</div>
+
