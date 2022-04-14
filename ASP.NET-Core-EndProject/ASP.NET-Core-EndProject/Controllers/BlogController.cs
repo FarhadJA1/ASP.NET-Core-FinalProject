@@ -20,7 +20,7 @@ namespace ASP.NET_Core_EndProject.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            List<Blog> blogs = await _context.Blogs.ToListAsync();
+            List<Blog> blogs = await _context.Blogs.Where(m => m.IsDelete == false).ToListAsync();
 
             BlogVM blogVM = new BlogVM()
             {

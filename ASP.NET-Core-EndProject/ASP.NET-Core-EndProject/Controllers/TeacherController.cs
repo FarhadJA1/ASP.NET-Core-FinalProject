@@ -20,7 +20,7 @@ namespace ASP.NET_Core_EndProject.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            List<Teacher> teachers =await _context.Teachers.ToListAsync();
+            List<Teacher> teachers =await _context.Teachers.Where(m => m.IsDelete == false).ToListAsync();
 
             TeacherVM teacherVM = new TeacherVM()
             {
@@ -31,7 +31,7 @@ namespace ASP.NET_Core_EndProject.Controllers
         public async Task<IActionResult> TeacherDetails(int id)
         {
             Teacher teacher = await _context.Teachers
-                .Where(m=>m.Id == id)
+                .Where(m=>m.Id == id && m.IsDelete == false)
                 .Include(m=>m.TeacherContacts)
                 .Include(m=>m.TeacherDetails)
                 .Include(m => m.TeacherSkills)

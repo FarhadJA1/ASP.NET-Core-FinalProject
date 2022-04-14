@@ -20,11 +20,11 @@ namespace ASP.NET_Core_EndProject.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            Welcome welcome = await _context.Welcome.FirstOrDefaultAsync();
-            List<Teacher> teachers = await _context.Teachers.ToListAsync();
-            Video video = await _context.Video.FirstOrDefaultAsync();
-            List<NoticePanel> noticePanel = await _context.NoticePanel.ToListAsync();
-            Testimonial testimonial = await _context.Testimonials.FirstOrDefaultAsync();
+            Welcome welcome = await _context.Welcome.Where(m=>m.IsDelete==false).FirstOrDefaultAsync();
+            List<Teacher> teachers = await _context.Teachers.Where(m => m.IsDelete == false).ToListAsync();
+            Video video = await _context.Video.Where(m => m.IsDelete == false).FirstOrDefaultAsync();
+            List<NoticePanel> noticePanel = await _context.NoticePanel.Where(m => m.IsDelete == false).ToListAsync();
+            Testimonial testimonial = await _context.Testimonials.Where(m => m.IsDelete == false).FirstOrDefaultAsync();
 
             AboutVM aboutVM = new AboutVM()
             {

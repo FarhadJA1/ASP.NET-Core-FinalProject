@@ -35,13 +35,13 @@
                     <h4>about me</h4>
                     <p>@Model.Teacher.About</p>
                     <ul>
-                        @foreach (var teacherDetail in Model.Teacher.TeacherDetails)
-                        {
-                            <li><span>degree: </span>@teacherDetail.Degree</li>
-                            <li><span>experience: </span>@teacherDetail.Experience</li>
-                            <li><span>hobbies: </span>@teacherDetail.Hobbies</li>
-                            <li><span>faculty: </span>@teacherDetail.Faculty</li>
-                        }
+                        
+                        
+                            <li><span>degree: </span>@Model.Teacher.TeacherDetails.Degree</li>
+                            <li><span>experience: </span>@Model.Teacher.TeacherDetails.Experience</li>
+                            <li><span>hobbies: </span>@Model.Teacher.TeacherDetails.Hobbies</li>
+                            <li><span>faculty: </span>@Model.Teacher.TeacherDetails.Faculty</li>
+                        
 
                     </ul>
                 </div>
@@ -51,13 +51,9 @@
             <div class="col-md-3 col-sm-4">
                 <div class="teacher-contact">
                     <h4>contact information</h4>
-                    @foreach (var teacherContact in Model.Teacher.TeacherContacts)
-                    {
-                        <p><span>mail me : </span>@teacherContact.Mail</p>
-                        <p><span>make a call : </span>@teacherContact.Phone</p>
-                        <p><span>skype : </span>@teacherContact.SkypeAddress</p>
-                    }
-
+                        <p><span>mail me : </span>@Model.Teacher.TeacherContacts.Mail</p>
+                        <p><span>make a call : </span>@Model.Teacher.TeacherContacts.Phone</p>
+                        <p><span>skype : </span>@Model.Teacher.TeacherContacts.SkypeAddress</p>
                     <ul>
                         <li><a href="https://www.facebook.com/devitems/?ref=bookmarks"><i class="zmdi zmdi-facebook"></i></a></li>
                         <li><a href="https://www.pinterest.com/devitemsllc/"><i class="zmdi zmdi-pinterest"></i></a></li>

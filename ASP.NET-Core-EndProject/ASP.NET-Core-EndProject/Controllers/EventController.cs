@@ -31,7 +31,7 @@ namespace ASP.NET_Core_EndProject.Controllers
         public async Task<IActionResult> EventDetails(int id)
         {
             Event courseEvent = await _context.Events
-                .Where(m=>m.Id==id)
+                .Where(m=>m.Id==id && m.IsDelete==false)
                 .Include(m=>m.EventSpeakers)
                 .ThenInclude(m=>m.Teacher)
                 .FirstOrDefaultAsync();
