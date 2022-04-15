@@ -2,6 +2,7 @@
 using ASP.NET_Core_EndProject.Areas.AdminArea.Utilities.Helpers;
 using ASP.NET_Core_EndProject.Data;
 using ASP.NET_Core_EndProject.Models;
+using ASP.NET_Core_EndProject.ViewModels;
 using ASP.NET_Core_EndProject.ViewModels.Admin;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -124,6 +125,117 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            Teacher teacher = await _context.Teachers.Where(m => m.Id == id).FirstOrDefaultAsync();
+            TeacherContact teacherContact = await _context.TeacherContacts.Where(m => m.TeacherId == teacher.Id).FirstOrDefaultAsync();
+            TeacherDetail teacherDetail = await _context.TeacherDetails.Where(m => m.TeacherId == teacher.Id).FirstOrDefaultAsync();
+            TeacherSkills teacherSkills = await _context.TeacherSkills.Where(m => m.TeacherId == teacher.Id).FirstOrDefaultAsync();
+            if (teacher == null) return NotFound();
+            string path = Path.Combine(_environment.WebRootPath, "assets/img/teacher", teacher.Image);
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+            teacher.IsDelete = true;
+            teacherContact.IsDelete = true;
+            teacherDetail.IsDelete = true;
+            teacherSkills.IsDelete = true;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> Update(int id)
+        {
+            Teacher teacher = await _context.Teachers.Where(m => m.Id == id)
+                .Include(m=>m.TeacherContacts)
+                .Include(m=>m.TeacherDetails)
+                .Include(m=>m.TeacherSkills)
+                .ThenInclude(m=>m.Skills)
+                .FirstOrDefaultAsync();
+            TeacherSkills teacherSkills = await _context.TeacherSkills.Where(m => m.TeacherId == teacher.Id).FirstOrDefaultAsync();
+            TeacherContact teacherContact = await _context.TeacherContacts.Where(m => m.TeacherId == teacher.Id).FirstOrDefaultAsync();
+            TeacherDetail teacherDetail = await _context.TeacherDetails.Where(m => m.Id == teacher.Id).FirstOrDefaultAsync();
+            if (teacher == null) return NotFound();
+            List<Skills> skills = await _context.Skills.ToListAsync();
+            TeacherUpdateVM teacherUpdateVM = new TeacherUpdateVM()
+            {
+                Teacher=teacher,
+                TeacherContact=teacherContact,
+                TeacherDetail=teacherDetail,
+                Percent=teacherSkills.Percent,
+                Skills=skills,
+            };
 
+            return View(teacherUpdateVM);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int id,TeacherUpdateVM teacherUpdateVM)
+        {
+            if (!ModelState.IsValid) return View();
+
+            if (!teacherUpdateVM.Photo.CheckContentType("image/"))
+            {
+                ModelState.AddModelError("Photo", "File type is invalid");
+                return View();
+            }
+            if (teacherUpdateVM.Photo.Length / 1024 > 300)
+            {
+                ModelState.AddModelError("Photo", "File size is invalid");
+                return View();
+            }
+            if (id != teacherUpdateVM.Id) return BadRequest();
+            Teacher dbTeacher = await _context.Teachers
+                .Where(m => m.Id == teacherUpdateVM.Id)
+                .Include(m=>m.TeacherContacts)
+                .Include(m=>m.TeacherDetails)
+                .Include(m=>m.TeacherSkills)
+                .ThenInclude(m=>m.Skills)
+                .FirstOrDefaultAsync();
+            
+            string filename = Guid.NewGuid().ToString() + "_" + teacherUpdateVM.Photo.FileName;
+            string path = Helper.GetPath(_environment.WebRootPath, "assets/img/teacher", filename);
+            using (FileStream stream = new FileStream(path, FileMode.Create))
+            {
+                await teacherUpdateVM.Photo.CopyToAsync(stream);
+            }
+
+            string lastImage = Path.Combine(_environment.WebRootPath, "assets/img/teacher", dbTeacher.Image);
+            if (System.IO.File.Exists(lastImage))
+            {
+                System.IO.File.Delete(lastImage);
+            }
+            
+
+            dbTeacher.Image = filename;
+            dbTeacher.Fullname = teacherUpdateVM.Teacher.Fullname;
+            dbTeacher.About = teacherUpdateVM.Teacher.About;
+            dbTeacher.Profession = teacherUpdateVM.Teacher.Profession;
+            dbTeacher.TeacherContacts.Mail = teacherUpdateVM.TeacherContact.Mail;
+            dbTeacher.TeacherContacts.Phone = teacherUpdateVM.TeacherContact.Phone;
+            dbTeacher.TeacherContacts.SkypeAddress = teacherUpdateVM.TeacherContact.SkypeAddress;
+            dbTeacher.TeacherDetails.Degree = teacherUpdateVM.TeacherDetail.Degree;
+            dbTeacher.TeacherDetails.Experience = teacherUpdateVM.TeacherDetail.Experience;
+            dbTeacher.TeacherDetails.Faculty = teacherUpdateVM.TeacherDetail.Faculty;
+            dbTeacher.TeacherDetails.Hobbies = teacherUpdateVM.TeacherDetail.Hobbies;
+            foreach (var teacherSkills in dbTeacher.TeacherSkills)
+            {
+                teacherSkills.Percent = teacherUpdateVM.Percent;
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> Detail(int id)
+        {
+            Teacher teacher = await _context.Teachers.Where(m => m.Id == id)
+                .Include(m => m.TeacherContacts)
+                .Include(m=>m.TeacherDetails)
+                .Include(m=>m.TeacherSkills)
+                .ThenInclude(m=>m.Skills)
+                .FirstOrDefaultAsync();
+            return View(teacher);
+        }
     }
 }

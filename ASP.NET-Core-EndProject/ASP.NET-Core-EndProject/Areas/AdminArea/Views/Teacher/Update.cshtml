@@ -1,0 +1,90 @@
+﻿@model TeacherUpdateVM
+@{
+    ViewData["Title"] = "Update Teacher";
+    int count = 0;
+}
+
+<div class="container">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <img style="width:150px;height:150px;border-radius:50%" src="~/assets/img/teacher/@Model.Teacher.Image" alt="Alternate Text" />
+
+                </div>
+
+                <form class="forms-sample" method="post" asp-action="Update" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Photo"></label>
+                        <input class="form-control" asp-for="Photo">
+                        <span class="text-danger" asp-validation-for="Photo"></span>
+
+                        <label asp-for="@Model.Teacher.Fullname"></label>
+                        <input class="form-control" asp-for="@Model.Teacher.Fullname">
+                        <span class="text-danger" asp-validation-for="@Model.Teacher.Fullname"></span>
+
+                        <label asp-for="@Model.Teacher.Profession"></label>
+                        <input class="form-control" asp-for="@Model.Teacher.Profession">
+                        <span class="text-danger" asp-validation-for="@Model.Teacher.Profession"></span>
+
+                        <label asp-for="@Model.Teacher.About"></label>
+                        <input class="form-control" asp-for="@Model.Teacher.About">
+                        <span class="text-danger" asp-validation-for="@Model.Teacher.About"></span>
+
+                        <h3 class="my-5">Teacher Contacts</h3>
+
+                        <label asp-for="@Model.TeacherContact.Mail"></label>
+                        <input class="form-control" asp-for="@Model.TeacherContact.Mail">
+                        <span class="text-danger" asp-validation-for="@Model.TeacherContact.Mail"></span>
+
+                        <label asp-for="@Model.TeacherContact.Phone"></label>
+                        <input class="form-control" asp-for="@Model.TeacherContact.Phone">
+                        <span class="text-danger" asp-validation-for="@Model.TeacherContact.Phone"></span>
+
+                        <label asp-for="@Model.TeacherContact.SkypeAddress"></label>
+                        <input class="form-control" asp-for="@Model.TeacherContact.SkypeAddress">
+                        <span class="text-danger" asp-validation-for="@Model.TeacherContact.SkypeAddress"></span>
+
+                        <h3 class="my-5">Teacher Details</h3>
+
+                        <label asp-for="@Model.TeacherDetail.Degree"></label>
+                        <input class="form-control" asp-for="@Model.TeacherDetail.Degree">
+                        <span class="text-danger" asp-validation-for="@Model.TeacherDetail.Degree"></span>
+
+                        <label asp-for="@Model.TeacherDetail.Experience"></label>
+                        <input class="form-control" asp-for="@Model.TeacherDetail.Experience">
+                        <span class="text-danger" asp-validation-for="@Model.TeacherDetail.Experience"></span>
+
+                        <label asp-for="@Model.TeacherDetail.Hobbies"></label>
+                        <input class="form-control" asp-for="@Model.TeacherDetail.Hobbies">
+                        <span class="text-danger" asp-validation-for="@Model.TeacherDetail.Hobbies"></span>
+
+                        <label asp-for="@Model.TeacherDetail.Faculty"></label>
+                        <input class="form-control" asp-for="@Model.TeacherDetail.Faculty">
+                        <span class="text-danger" asp-validation-for="@Model.TeacherDetail.Faculty"></span>
+
+                        <h3 class="my-5">Teacher Skills</h3>
+
+                        @foreach (var skill in Model.Skills)
+                        {
+                            <input type="hidden" asp-for="@Model.Skills[count].Name" />
+                            <input type="hidden" asp-for="@Model.Skills[count].Id" />
+                            <label>@skill.Name</label>
+                            <input type="number" class="form-control" asp-for="@Model.Percent">
+                            <span class="text-danger" asp-validation-for="@Model.Percent"></span>
+                            count++;
+                        }
+
+
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <button class="btn btn-light">
+                        <a asp-action="Index">Cancel</a>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

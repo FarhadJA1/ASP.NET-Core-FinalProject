@@ -395,7 +395,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item nav-category">Forms and Datas</li>
+                    <li class="nav-item nav-category">Pages</li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                             <i class="menu-icon mdi mdi-card-text-outline"></i>
@@ -448,8 +448,19 @@
                                 <li class="nav-item"><a class="nav-link" asp-area="AdminArea" asp-controller="Teacher" asp-action="Index">Teachers</a></li>
                             </ul>
                         </div>
-                    </li>
-                    <li class="nav-item nav-category">pages</li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                            <i class="menu-icon mdi mdi mdi-earth"></i>
+                            <span class="menu-title">Event</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="auth">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" asp-area="AdminArea" asp-controller="Event" asp-action="Index">Events</a></li>
+                            </ul>
+                        </div>
+                    </li>                    
+                    <li class="nav-item nav-category">Other</li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                             <i class="menu-icon mdi mdi-account-circle-outline"></i>
