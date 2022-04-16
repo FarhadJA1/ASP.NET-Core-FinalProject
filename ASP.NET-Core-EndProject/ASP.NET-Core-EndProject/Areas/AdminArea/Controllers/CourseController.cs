@@ -50,18 +50,7 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CourseCreateVM courseCreateVM)
         {
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Description"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Assesment"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Apply"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["About"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Certification"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Starts"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Duration"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["ClassDuration"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Students"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Price"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Language"].ValidationState == ModelValidationState.Invalid) return View();
+            if (!ModelState.IsValid) return View();
 
             if (!courseCreateVM.Photo.CheckContentType("image/"))
             {
@@ -166,18 +155,7 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
             {
                 ModelState.AddModelError("Photo", "File size is invalid");
             }
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Description"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Assesment"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Apply"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["About"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Certification"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Starts"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Duration"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["ClassDuration"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Students"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Price"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Language"].ValidationState == ModelValidationState.Invalid) return View();
+            if (!ModelState.IsValid) return View();
 
             if (id != courseUpdateVM.Id) return BadRequest();
 
@@ -188,6 +166,11 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
             using (FileStream stream = new FileStream(path, FileMode.Create))
             {
                 await courseUpdateVM.Photo.CopyToAsync(stream);
+            }
+            string lastImage = Path.Combine(_environment.WebRootPath, "assets/img/course", dbCourse.Image);
+            if (System.IO.File.Exists(lastImage))
+            {
+                System.IO.File.Delete(lastImage);
             }
             dbCourse.Image = filename;
             dbCourse.Title = courseUpdateVM.Title;

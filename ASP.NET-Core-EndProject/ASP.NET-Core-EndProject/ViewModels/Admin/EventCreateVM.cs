@@ -13,6 +13,8 @@ namespace ASP.NET_Core_EndProject.ViewModels.Admin
         [Required]
         public Event Event { get; set; }
         [Required]
+        public List<Teacher> Teachers { get; set; }
+        
         public List<EventSpeaker> EventSpeakers { get; set; }
         [Required]
         public IFormFile Photo { get; set; }

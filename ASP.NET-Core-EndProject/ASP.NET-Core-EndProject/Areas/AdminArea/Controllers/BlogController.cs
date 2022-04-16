@@ -67,10 +67,7 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
             {
                 await blogCreateVM.Photo.CopyToAsync(stream);
             }
-            using (FileStream stream = new FileStream(postPath, FileMode.Create))
-            {
-                await blogCreateVM.Photo.CopyToAsync(stream);
-            }
+            
 
             Blog blog = new Blog()
             {
@@ -146,9 +143,10 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
             {
                 await blogUpdateVM.Photo.CopyToAsync(stream);
             }
-            using (FileStream stream = new FileStream(postPath, FileMode.Create))
+            string lastImage = Path.Combine(_environment.WebRootPath, "assets/img/blog", dbBlog.Image);
+            if (System.IO.File.Exists(lastImage))
             {
-                await blogUpdateVM.Photo.CopyToAsync(stream);
+                System.IO.File.Delete(lastImage);
             }
             dbBlog.Image = filename;
             dbBlog.CommentCount = blogUpdateVM.CommentCount;

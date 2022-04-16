@@ -1,5 +1,6 @@
 ﻿using ASP.NET_Core_EndProject.Data;
 using ASP.NET_Core_EndProject.Models;
+using ASP.NET_Core_EndProject.Utilities.Pagination;
 using ASP.NET_Core_EndProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,15 +19,24 @@ namespace ASP.NET_Core_EndProject.Controllers
             _context = context;
 
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1, int take = 8)
         {
-            List<Teacher> teachers =await _context.Teachers.Where(m => m.IsDelete == false).ToListAsync();
+            List<Teacher> teachers =await _context.Teachers
+                .Where(m => m.IsDelete == false)
+                .Skip((page - 1) * take)
+                .Take(take)
+                .OrderByDescending(m => m.Id)
+                .ToListAsync();
+            int count = await GetPageCount(take);
 
-            TeacherVM teacherVM = new TeacherVM()
-            {
-                Teachers=teachers,
-            };
-            return View(teacherVM);
+            Paginate<Teacher> pagination = new Paginate<Teacher>(teachers, page, count);
+
+            return View(pagination);
+        }
+        private async Task<int> GetPageCount(int take)
+        {
+            var count = await _context.Teachers.CountAsync();
+            return (int)Math.Ceiling((decimal)count / take);
         }
         public async Task<IActionResult> TeacherDetails(int id)
         {

@@ -1,4 +1,4 @@
-﻿@model CourseVM
+﻿@model Paginate<Course>
 @{
     ViewData["Title"] = "Index";
 }
@@ -28,15 +28,15 @@
                     <h3>search courses</h3>
                 </div>
                 <div class="course-form">
-                    <form id="search" action="#">
-                        <input type="search" placeholder="Search..." name="search" />
+                    <form asp-controller="Course" id="search" asp-action="Search">
+                        <input type="search"  placeholder="Search Course Title..." value="@ViewData["GetCourses"]" name="course" />
                         <button type="submit">search</button>
                     </form>
                 </div>
             </div>
         </div>
         <div class="row">
-            @foreach (var course in Model.Courses.OrderByDescending(m=>m.Id).Take(9))
+            @foreach (var course in Model.Datas.OrderByDescending(m => m.Id))
             {
                 <div class="col-md-4 hidden-sm col-xs-12">
                     <div class="single-course">
@@ -57,6 +57,20 @@
                 </div>
             }
 
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="pagination">
+                    <ul>
+                        @for (int i = 1; i <= Model.TotalPage; i++)
+                        {
+                            <li class="@(i==Model.CurrentPage? "disabled" : "")"><a asp-action="Index" asp-route-page="@i">@i</a></li>
+                        }
+
+
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>

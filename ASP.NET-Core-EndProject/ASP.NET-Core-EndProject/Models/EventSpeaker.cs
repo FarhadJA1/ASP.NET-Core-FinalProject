@@ -11,6 +11,6 @@ namespace ASP.NET_Core_EndProject.Models
         public int EventId { get; set; }
         public Event Event { get; set; }
         public int TeacherId { get; set; }
-        public Teacher Teacher { get; set; }
+        public Teacher Teacher { get; set; } 
     }
 }

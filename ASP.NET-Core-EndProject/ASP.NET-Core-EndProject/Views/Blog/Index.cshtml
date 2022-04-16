@@ -1,4 +1,4 @@
-﻿@model BlogVM
+﻿@model Paginate<Blog>
 @{
     ViewData["Title"] = "Index";
 }
@@ -23,7 +23,7 @@
 <div class="blog-area pt-150 pb-150">
     <div class="container">
         <div class="row">
-            @foreach (var blog in Model.Blogs)
+            @foreach (var blog in Model.Datas)
             {
                 <div class="col-md-4 hidden-sm col-xs-12">
                     <div class="single-blog">
@@ -51,9 +51,12 @@
             <div class="col-xs-12">
                 <div class="pagination">
                     <ul>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
+                        @for (int i = 1; i <= Model.TotalPage; i++)
+                        {
+                            <li class="@(i==Model.CurrentPage? "disabled" : "")"><a asp-action="Index" asp-route-page="@i">@i</a></li>
+                        }
+
+
                     </ul>
                 </div>
             </div>

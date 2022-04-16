@@ -1,8 +1,8 @@
 ﻿@model EventCreateVM
 @{
     ViewData["Title"] = "Create";
-    
-    
+
+
 }
 
 <div class="container">
@@ -38,21 +38,19 @@
 
                         <h3 class="my-5">Event Speakers</h3>
 
-                        @for (int i = 0; i < Model.EventSpeakers.Count(); i++)
+                        @for (int i = 0; i < Model.Teachers.Count(); i++)
                         {
-                            <label>@Model.EventSpeakers[i].Teacher.Fullname"</label>
-                            <input type="hidden" asp-for="@Model.EventSpeakers[i].Teacher.Fullname" />
-                            <input type="hidden" asp-for="@Model.EventSpeakers[i]" />
-                            <input type="hidden" asp-for="@Model.EventSpeakers[i].Teacher"/>
-                            <input class="checkbox" asp-for="@Model.EventSpeakers[i].Teacher.isChecked">
-                            <span class="text-danger" asp-validation-for="@Model.EventSpeakers[i].Teacher.Fullname"></span>
+                            <div>
+                                <input type="hidden" asp-for="@Model.Teachers[i]" />
+                                <input class="checkbox" asp-for="@Model.Teachers[i].isChecked">
+                                <label style="font-size:20px">@Model.Teachers[i].Fullname"</label>
+                                <input type="hidden" asp-for="@Model.Teachers[i].Fullname" />
+                                <input type="hidden" asp-for="@Model.Teachers[i].Id" />
+                                <span class="text-danger" asp-validation-for="@Model.EventSpeakers[i].Teacher.Fullname"></span>
+                                <hr />
+                            </div>
+
                         }
-
-
-
-
-
-
 
 
                     </div>

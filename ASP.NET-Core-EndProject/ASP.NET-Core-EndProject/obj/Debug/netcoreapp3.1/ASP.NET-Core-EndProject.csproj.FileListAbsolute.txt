@@ -207,3 +207,6 @@ C:\Users\ASUS\Desktop\ASP.NET Core Final Project\ASP.NET-Core-EndProject\ASP.NET
 C:\Users\ASUS\Desktop\ASP.NET Core Final Project\ASP.NET-Core-EndProject\ASP.NET-Core-EndProject\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Teacher\Detail.cshtml.g.cs
 C:\Users\ASUS\Desktop\ASP.NET Core Final Project\ASP.NET-Core-EndProject\ASP.NET-Core-EndProject\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Event\Index.cshtml.g.cs
 C:\Users\ASUS\Desktop\ASP.NET Core Final Project\ASP.NET-Core-EndProject\ASP.NET-Core-EndProject\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Event\Create.cshtml.g.cs
+C:\Users\ASUS\Desktop\ASP.NET Core Final Project\ASP.NET-Core-EndProject\ASP.NET-Core-EndProject\obj\Debug\netcoreapp3.1\Razor\Views\Course\Search.cshtml.g.cs
+C:\Users\ASUS\Desktop\ASP.NET Core Final Project\ASP.NET-Core-EndProject\ASP.NET-Core-EndProject\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Event\Update.cshtml.g.cs
+C:\Users\ASUS\Desktop\ASP.NET Core Final Project\ASP.NET-Core-EndProject\ASP.NET-Core-EndProject\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Event\Detail.cshtml.g.cs

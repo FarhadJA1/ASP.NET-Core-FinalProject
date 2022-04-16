@@ -1,0 +1,77 @@
+﻿@model EventUpdateVM
+@{
+    ViewData["Title"] = "Create";
+
+
+}
+
+<div class="container">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+
+                <form class="forms-sample" method="post" asp-action="Update" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Photo"></label>
+                        <input class="form-control" asp-for="Photo">
+                        <span class="text-danger" asp-validation-for="Photo"></span>
+
+                        <label asp-for="@Model.Event.Title"></label>
+                        <input class="form-control" asp-for="@Model.Event.Title">
+                        <span class="text-danger" asp-validation-for="@Model.Event.Title"></span>
+
+                        <label asp-for="@Model.Event.Date"></label>
+                        <input class="form-control" asp-for="@Model.Event.Date">
+                        <span class="text-danger" asp-validation-for="@Model.Event.Date"></span>
+
+                        <label asp-for="@Model.Event.Time"></label>
+                        <input class="form-control" asp-for="@Model.Event.Time">
+                        <span class="text-danger" asp-validation-for="@Model.Event.Time"></span>
+
+                        <label asp-for="@Model.Event.Description"></label>
+                        <input class="form-control" asp-for="@Model.Event.Description">
+                        <span class="text-danger" asp-validation-for="@Model.Event.Description"></span>
+
+                        <label asp-for="@Model.Event.Location"></label>
+                        <input class="form-control" asp-for="@Model.Event.Location">
+                        <span class="text-danger" asp-validation-for="@Model.Event.Location"></span>
+
+                        <h3 class="mt-5">Event Speakers</h3>
+                        <hr class="my-5" style="font-weight:bolder" />
+                        <h5 class="text-primary">Speakers</h5>
+                        @foreach (var speaker in Model.Event.EventSpeakers)
+                        {
+                            <div>
+                                <h6>@speaker.Teacher.Fullname</h6>
+                            </div>
+                        }
+                        <hr class="my-5" style="font-weight:bolder" />
+
+
+                        @for (int i = 0; i < Model.Teachers.Count(); i++)
+                        {
+                            <div >
+                                <input type="hidden" asp-for="@Model.Teachers[i]" />
+                                <input class="checkbox" asp-for="@Model.Teachers[i].isChecked">
+                                <label style="font-size:20px">@Model.Teachers[i].Fullname"</label>
+                                <input type="hidden" asp-for="@Model.Teachers[i].Fullname" />
+                                <input type="hidden" asp-for="@Model.Teachers[i].Id" />
+                                <span class="text-danger" asp-validation-for="@Model.EventSpeakers[i].Teacher.Fullname"></span>
+                                <hr />
+                            </div>
+
+                        }
+
+
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <button class="btn btn-light">
+                        <a asp-action="Index">Cancel</a>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

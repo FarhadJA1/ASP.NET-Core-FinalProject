@@ -1,5 +1,6 @@
 ﻿using ASP.NET_Core_EndProject.Data;
 using ASP.NET_Core_EndProject.Models;
+using ASP.NET_Core_EndProject.Utilities.Pagination;
 using ASP.NET_Core_EndProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -19,15 +20,23 @@ namespace ASP.NET_Core_EndProject.Controllers
             _context = context;
 
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1, int take = 6)
         {
-            List<Course> courses = await _context.Courses.Where(m => m.IsDelete == false).ToListAsync();
+            List<Course> courses = await _context.Courses
+                .Where(m => m.IsDelete == false)
+                .Skip((page - 1) * take)
+                .Take(take)
+                .OrderByDescending(m => m.Id)
+                .ToListAsync();
             
-            CourseVM courseVM = new CourseVM()
-            {
-                Courses=courses,
-            };
-            return View(courseVM);
+            int count = await GetPageCount(take);
+            Paginate<Course> pagination = new Paginate<Course>(courses, page, count);
+            return View(pagination);
+        }
+        private async Task<int> GetPageCount(int take)
+        {
+            var count = await _context.Courses.CountAsync();
+            return (int)Math.Ceiling((decimal)count / take);
         }
         public async Task<IActionResult> CourseDetails(int id)
         {
@@ -46,6 +55,18 @@ namespace ASP.NET_Core_EndProject.Controllers
                 Tags=tags,
             };
             return View(courseDetailsVM);
+        }
+        
+        public async Task<IActionResult> Search(string course)
+        {
+            ViewData["GetCourses"] = course;
+
+            if (!String.IsNullOrEmpty(course))
+            {
+                List<Course> courseQuery = await _context.Courses.Where(m => m.Title.Trim().ToLower().Contains(course.Trim().ToLower())).ToListAsync();
+                return View(courseQuery);
+            }
+            return View();
         }
         
 

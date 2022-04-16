@@ -1,0 +1,31 @@
+﻿@model Event
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container">
+    <h1 class="text-warning">Course detail</h1>
+    <hr />
+    <img src="~/assets/img/event/@Model.Image" alt="Alternate Text" style="width:350px;height:350px;border-radius:50%" />
+    <hr />
+    <h3 style="font-weight:bolder">Event Details</h3>
+    <hr />
+    <h3 class="text-warning mt-3" style="font-weight:bolder;font-family:sans-serif">Title: <span style="color:grey;font-size:20px;font-weight:lighter">@Model.Title</span> </h3>
+    <h3 class="text-warning mt-3" style="font-weight: bolder; font-family: sans-serif">About: <span style="color: grey; font-size: 20px; font-weight: lighter">@Model.Date</span> </h3>
+    <h3 class="text-warning mt-3" style="font-weight:bolder;font-family:sans-serif">Apply: <span style="color:grey;font-size:20px;font-weight:lighter">@Model.Time</span> </h3>
+    <h3 class="text-warning mt-3" style="font-weight: bolder; font-family: sans-serif">Certification: <span style="color: grey; font-size: 20px; font-weight: lighter">@Model.Location</span> </h3>
+    <h3 class="text-warning mt-3" style="font-weight:bolder;font-family:sans-serif">Description: <span style="color:grey;font-size:20px;font-weight:lighter">@Model.Description</span> </h3>
+
+    @foreach (var eventSpeaker in Model.EventSpeakers)
+    {
+        <h3 class="text-warning mt-3" style="font-weight: bolder; font-family: sans-serif">Starts: <span style="color: grey; font-size: 20px; font-weight: lighter">@eventSpeaker.Teacher.Fullname<span> </h3>
+    }
+
+
+    <a asp-action="Index" class="btn btn-outline-warning mt-3">Go back</a>
+</div>
+
+
+
+
+

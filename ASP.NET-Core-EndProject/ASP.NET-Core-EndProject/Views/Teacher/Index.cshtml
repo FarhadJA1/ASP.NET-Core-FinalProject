@@ -1,4 +1,4 @@
-﻿@model TeacherVM
+﻿@model Paginate<Teacher>
 @{
     ViewData["Title"] = "Teacher";
 }
@@ -23,7 +23,7 @@
 <div class="teacher-area pt-150 pb-105">
     <div class="container">
         <div class="row">
-            @foreach (var teacher in Model.Teachers.OrderByDescending(m=>m.Id).Take(12))
+            @foreach (var teacher in Model.Datas.OrderByDescending(m => m.Id).Take(12))
             {
                 <div class="col-md-3 col-sm-4 col-xs-12">
                     <div class="single-teacher mb-45">
@@ -44,6 +44,20 @@
                 </div>
             }
 
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="pagination">
+                    <ul>
+                        @for (int i = 1; i <= Model.TotalPage; i++)
+                        {
+                            <li class="@(i==Model.CurrentPage? "disabled" : "")"><a asp-action="Index" asp-route-page="@i">@i</a></li>
+                        }
+
+
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
