@@ -40,8 +40,15 @@ using ASP.NET_Core_EndProject.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\ASUS\Desktop\ASP.NET Core Final Project\ASP.NET-Core-EndProject\ASP.NET-Core-EndProject\Views\_ViewImports.cshtml"
+using ASP.NET_Core_EndProject.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ff935a0f71dd4d55df9541724991f790e05a5354", @"/Views/Shared/Components/Sidebar/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7301741b40c7782f04eefdcde798cb9a54eb772b", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"35b53cca043214a292466dc08fb741782ff751cb", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_Sidebar_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<SidebarVM>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("alt", new global::Microsoft.AspNetCore.Html.HtmlString("blog"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -104,7 +111,7 @@ using ASP.NET_Core_EndProject.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n\r\n    </ul>\r\n</div>\r\n<div class=\"single-blog-widget mb-50\">\r\n    <div class=\"single-blog-banner\">\r\n        <a href=\"blog-details.html\" id=\"blog\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "ff935a0f71dd4d55df9541724991f790e05a53546047", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "ff935a0f71dd4d55df9541724991f790e05a53546301", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -145,7 +152,7 @@ AddHtmlAttributeValue("", 420, Model.Advert.Image, 420, 19, false);
 #line hidden
 #nullable disable
             WriteLiteral("        <div class=\"single-post\">\r\n            <div class=\"single-post-img\">\r\n                <a href=\"blog-details.html\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "ff935a0f71dd4d55df9541724991f790e05a53548572", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "ff935a0f71dd4d55df9541724991f790e05a53548826", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

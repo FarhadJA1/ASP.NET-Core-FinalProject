@@ -36,5 +36,7 @@ namespace ASP.NET_Core_EndProject.Data
         public DbSet<Skills> Skills { get; set; }
         public DbSet<EventSpeaker> EventSpeakers { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Subscribe> Subscribers { get; set; }
+
     }
 }

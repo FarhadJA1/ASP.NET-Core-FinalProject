@@ -8,6 +8,8 @@ namespace ASP.NET_Core_EndProject.Models
 {
     public class AppUser : IdentityUser
     {
+        public string Fullname { get; set; }
+        public bool Activated { get; set; }
 
     }
 }

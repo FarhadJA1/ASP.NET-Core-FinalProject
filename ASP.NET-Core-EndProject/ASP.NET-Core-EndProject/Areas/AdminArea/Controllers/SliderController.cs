@@ -12,9 +12,11 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using ASP.NET_Core_EndProject.Areas.AdminArea.Utilities.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
 {
+    
     [Area("AdminArea")]
     public class SliderController : Controller
     {
@@ -44,9 +46,7 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(SliderVM sliderVM)
         {
-            if(ModelState["Photo"].ValidationState==ModelValidationState.Invalid ||
-                ModelState["Description"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Title"].ValidationState == ModelValidationState.Invalid) return View();
+            if(!ModelState.IsValid) return View(sliderVM);
 
             if (!sliderVM.Photo.CheckContentType("image/"))
             {
@@ -119,9 +119,7 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
             {
                 ModelState.AddModelError("Photo", "File size is invalid");
             }
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid 
-                || ModelState["Description"].ValidationState == ModelValidationState.Invalid
-                || ModelState["Title"].ValidationState == ModelValidationState.Invalid) return View();
+            if (!ModelState.IsValid) return View();
 
             if (id != slider.Id) return BadRequest();
 
@@ -132,6 +130,11 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
             using (FileStream stream = new FileStream(path, FileMode.Create))
             {
                 await slider.Photo.CopyToAsync(stream);
+            }
+            string lastImage = Path.Combine(_environment.WebRootPath, "assets/img/blog", dbslider.Image);
+            if (System.IO.File.Exists(lastImage))
+            {
+                System.IO.File.Delete(lastImage);
             }
             dbslider.Image = filename;
             dbslider.Description = slider.Description;

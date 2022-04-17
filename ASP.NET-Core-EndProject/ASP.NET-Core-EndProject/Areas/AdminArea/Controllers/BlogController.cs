@@ -3,6 +3,7 @@ using ASP.NET_Core_EndProject.Areas.AdminArea.Utilities.Helpers;
 using ASP.NET_Core_EndProject.Data;
 using ASP.NET_Core_EndProject.Models;
 using ASP.NET_Core_EndProject.ViewModels.Admin;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -15,6 +16,7 @@ using System.Threading.Tasks;
 
 namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
 {
+    
     [Area("AdminArea")]
     public class BlogController : Controller
     {
@@ -45,9 +47,7 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(BlogCreateVM blogCreateVM)
         {
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Description"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Title"].ValidationState == ModelValidationState.Invalid) return View();
+            if (!ModelState.IsValid) return View();
 
             if (!blogCreateVM.Photo.CheckContentType("image/"))
             {
@@ -124,12 +124,7 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
             {
                 ModelState.AddModelError("Photo", "File size is invalid");
             }
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid
-                || ModelState["Description"].ValidationState == ModelValidationState.Invalid
-                || ModelState["CommentCount"].ValidationState == ModelValidationState.Invalid
-                || ModelState["Date"].ValidationState == ModelValidationState.Invalid
-                || ModelState["From"].ValidationState == ModelValidationState.Invalid
-                || ModelState["Title"].ValidationState == ModelValidationState.Invalid) return View();
+            if (!ModelState.IsValid) return View();
             
 
             if (id != blogUpdateVM.Id) return BadRequest();

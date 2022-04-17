@@ -3,6 +3,7 @@ using ASP.NET_Core_EndProject.Areas.AdminArea.Utilities.Helpers;
 using ASP.NET_Core_EndProject.Data;
 using ASP.NET_Core_EndProject.Models;
 using ASP.NET_Core_EndProject.ViewModels.Admin;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
 {
+    
     [Area("AdminArea")]
     public class EventController : Controller
     {

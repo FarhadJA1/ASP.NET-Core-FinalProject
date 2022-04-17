@@ -10,9 +10,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using ASP.NET_Core_EndProject.Areas.AdminArea.Utilities.Helpers;
 using System.IO;
+using static ASP.NET_Core_EndProject.Utilities.Helpers.Helper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
 {
+    
     [Area("AdminArea")]
     public class WelcomeController : Controller
     {
@@ -47,9 +50,7 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
             {
                 ModelState.AddModelError("Photo", "File size is invalid");
             }
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid
-                || ModelState["Description"].ValidationState == ModelValidationState.Invalid
-                || ModelState["Title"].ValidationState == ModelValidationState.Invalid) return View();
+            if (!ModelState.IsValid) return View();
 
             if (id != welcome.Id) return BadRequest();
 
@@ -60,6 +61,11 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
             using (FileStream stream = new FileStream(path, FileMode.Create))
             {
                 await welcome.Photo.CopyToAsync(stream);
+            }
+            string lastImage = Path.Combine(_environment.WebRootPath, "assets/img/blog", dbWelcome.Image);
+            if (System.IO.File.Exists(lastImage))
+            {
+                System.IO.File.Delete(lastImage);
             }
             dbWelcome.Image = filename;
             dbWelcome.Description = welcome.Description;

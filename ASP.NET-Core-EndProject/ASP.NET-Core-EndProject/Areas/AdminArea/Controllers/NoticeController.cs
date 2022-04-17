@@ -1,5 +1,6 @@
 ﻿using ASP.NET_Core_EndProject.Data;
 using ASP.NET_Core_EndProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
 {
+    
     [Area("AdminArea")]
     public class NoticeController : Controller
     {

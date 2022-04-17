@@ -26,5 +26,6 @@ namespace ASP.NET_Core_EndProject.Services
             List<SocNetwork> socialNetworks = await _context.SocNetworks.ToListAsync();
             return socialNetworks;
         }
+        
     }
 }

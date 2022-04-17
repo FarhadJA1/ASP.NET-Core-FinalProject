@@ -2,6 +2,7 @@
 using ASP.NET_Core_EndProject.Areas.AdminArea.Utilities.Helpers;
 using ASP.NET_Core_EndProject.Data;
 using ASP.NET_Core_EndProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -14,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
 {
+    
     [Area("AdminArea")]
     public class TestimonialController : Controller
     {
@@ -43,10 +45,7 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Testimonial testimonial)
         {
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Description"].ValidationState == ModelValidationState.Invalid ||
-                ModelState["Name"].ValidationState == ModelValidationState.Invalid || 
-                ModelState["Profession"].ValidationState == ModelValidationState.Invalid) return View();
+            if (!ModelState.IsValid) return View();
 
             if (!testimonial.Photo.CheckContentType("image/"))
             {
@@ -108,10 +107,7 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
             {
                 ModelState.AddModelError("Photo", "File size is invalid");
             }
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid
-                || ModelState["Description"].ValidationState == ModelValidationState.Invalid
-                || ModelState["Profession"].ValidationState == ModelValidationState.Invalid
-                || ModelState["Name"].ValidationState == ModelValidationState.Invalid) return View();
+            if (!ModelState.IsValid) return View();
 
             if (id != testimonial.Id) return BadRequest();
 
@@ -122,6 +118,11 @@ namespace ASP.NET_Core_EndProject.Areas.AdminArea.Controllers
             using (FileStream stream = new FileStream(path, FileMode.Create))
             {
                 await testimonial.Photo.CopyToAsync(stream);
+            }
+            string lastImage = Path.Combine(_environment.WebRootPath, "assets/img/blog", dbTestimonial.Image);
+            if (System.IO.File.Exists(lastImage))
+            {
+                System.IO.File.Delete(lastImage);
             }
             dbTestimonial.Image = filename;
             dbTestimonial.Description = testimonial.Description;

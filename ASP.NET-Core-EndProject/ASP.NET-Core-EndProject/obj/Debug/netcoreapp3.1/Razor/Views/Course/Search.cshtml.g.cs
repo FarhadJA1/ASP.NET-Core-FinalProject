@@ -40,8 +40,15 @@ using ASP.NET_Core_EndProject.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\ASUS\Desktop\ASP.NET Core Final Project\ASP.NET-Core-EndProject\ASP.NET-Core-EndProject\Views\_ViewImports.cshtml"
+using ASP.NET_Core_EndProject.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8ab396bcf4fb3e99e3933e5ee0a7dd5f38214a1d", @"/Views/Course/Search.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7301741b40c7782f04eefdcde798cb9a54eb772b", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"35b53cca043214a292466dc08fb741782ff751cb", @"/Views/_ViewImports.cshtml")]
     public class Views_Course_Search : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Course>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Course", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -112,7 +119,7 @@ using ASP.NET_Core_EndProject.ViewModels;
                 </div>
                 <div class=""course-form"">
                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8ab396bcf4fb3e99e3933e5ee0a7dd5f38214a1d7238", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8ab396bcf4fb3e99e3933e5ee0a7dd5f38214a1d7492", async() => {
                 WriteLiteral("\r\n                        <input type=\"search\" placeholder=\"Search Course Title...\"");
                 BeginWriteAttribute("value", " value=\"", 1050, "\"", 1081, 1);
 #nullable restore
@@ -152,9 +159,9 @@ WriteAttributeValue("", 1058, ViewData["GetCourses"], 1058, 23, false);
 #line hidden
 #nullable disable
             WriteLiteral("                <div class=\"col-md-4 hidden-sm col-xs-12\">\r\n                    <div class=\"single-course\">\r\n                        <div class=\"course-img\">\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8ab396bcf4fb3e99e3933e5ee0a7dd5f38214a1d10203", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8ab396bcf4fb3e99e3933e5ee0a7dd5f38214a1d10457", async() => {
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "8ab396bcf4fb3e99e3933e5ee0a7dd5f38214a1d10491", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "8ab396bcf4fb3e99e3933e5ee0a7dd5f38214a1d10745", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -225,7 +232,7 @@ AddHtmlAttributeValue("", 1699, course.Image, 1699, 13, false);
 #line hidden
 #nullable disable
             WriteLiteral("</p>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8ab396bcf4fb3e99e3933e5ee0a7dd5f38214a1d15413", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8ab396bcf4fb3e99e3933e5ee0a7dd5f38214a1d15667", async() => {
                 WriteLiteral("read more");
             }
             );

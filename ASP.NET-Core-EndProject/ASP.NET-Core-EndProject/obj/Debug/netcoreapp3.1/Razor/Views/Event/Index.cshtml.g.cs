@@ -40,8 +40,15 @@ using ASP.NET_Core_EndProject.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\ASUS\Desktop\ASP.NET Core Final Project\ASP.NET-Core-EndProject\ASP.NET-Core-EndProject\Views\_ViewImports.cshtml"
+using ASP.NET_Core_EndProject.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fee2631211c5e2877b7f124bc10b68f49c4a4c9c", @"/Views/Event/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7301741b40c7782f04eefdcde798cb9a54eb772b", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"35b53cca043214a292466dc08fb741782ff751cb", @"/Views/_ViewImports.cshtml")]
     public class Views_Event_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Paginate<Event>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("alt", new global::Microsoft.AspNetCore.Html.HtmlString("event"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -113,9 +120,9 @@ using ASP.NET_Core_EndProject.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("                <div class=\"col-md-4 hidden-sm hidden-xs\">\r\n                    <div class=\"single-event\">\r\n                        <div class=\"event-img\">\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fee2631211c5e2877b7f124bc10b68f49c4a4c9c6890", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fee2631211c5e2877b7f124bc10b68f49c4a4c9c7144", async() => {
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "fee2631211c5e2877b7f124bc10b68f49c4a4c9c7177", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "fee2631211c5e2877b7f124bc10b68f49c4a4c9c7431", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -178,7 +185,7 @@ AddHtmlAttributeValue("", 1099, events.Image, 1099, 13, false);
 #line hidden
 #nullable disable
             WriteLiteral("</h3>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"event-content text-left\">\r\n                            <h4>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fee2631211c5e2877b7f124bc10b68f49c4a4c9c11810", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fee2631211c5e2877b7f124bc10b68f49c4a4c9c12064", async() => {
 #nullable restore
 #line 42 "C:\Users\ASUS\Desktop\ASP.NET Core Final Project\ASP.NET-Core-EndProject\ASP.NET-Core-EndProject\Views\Event\Index.cshtml"
                                                                                                          Write(events.Title);
@@ -233,7 +240,7 @@ AddHtmlAttributeValue("", 1099, events.Image, 1099, 13, false);
 #line hidden
 #nullable disable
             WriteLiteral("</li>\r\n                            </ul>\r\n                            <div class=\"event-content-right\">\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fee2631211c5e2877b7f124bc10b68f49c4a4c9c15465", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fee2631211c5e2877b7f124bc10b68f49c4a4c9c15719", async() => {
                 WriteLiteral("join now");
             }
             );
@@ -294,7 +301,7 @@ WriteAttributeValue("", 2548, i==Model.CurrentPage? "disabled" : "", 2548, 40, f
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fee2631211c5e2877b7f124bc10b68f49c4a4c9c19357", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fee2631211c5e2877b7f124bc10b68f49c4a4c9c19611", async() => {
 #nullable restore
 #line 62 "C:\Users\ASUS\Desktop\ASP.NET Core Final Project\ASP.NET-Core-EndProject\ASP.NET-Core-EndProject\Views\Event\Index.cshtml"
                                                                                                                       Write(i);

@@ -32,6 +32,7 @@ namespace ASP.NET_Core_EndProject.Controllers
             List<Event> events = await _context.Events.Where(m => m.IsDelete == false).ToListAsync();
             Testimonial testimonial = await _context.Testimonials.Where(m => m.IsDelete == false).FirstOrDefaultAsync();
             List<Blog> blogs = await _context.Blogs.Where(m => m.IsDelete == false).ToListAsync();
+            
 
             HomeVM homeVM = new HomeVM()
             {
@@ -43,11 +44,14 @@ namespace ASP.NET_Core_EndProject.Controllers
                 NoticePanel=noticePanel,
                 Events=events,
                 Testimonial=testimonial,
-                Blogs=blogs
+                Blogs=blogs,
+               
+                
             };
             return View(homeVM);
 
         }
+        
 
     }
 }

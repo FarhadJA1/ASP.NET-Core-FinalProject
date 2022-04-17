@@ -40,8 +40,15 @@ using ASP.NET_Core_EndProject.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\ASUS\Desktop\ASP.NET Core Final Project\ASP.NET-Core-EndProject\ASP.NET-Core-EndProject\Views\_ViewImports.cshtml"
+using ASP.NET_Core_EndProject.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"285c25cabbd84259604d61f4f0dd8e2a9d1684f1", @"/Views/Shared/_NoticePartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7301741b40c7782f04eefdcde798cb9a54eb772b", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"35b53cca043214a292466dc08fb741782ff751cb", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__NoticePartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<NoticePanel>>
     {
         #pragma warning disable 1998

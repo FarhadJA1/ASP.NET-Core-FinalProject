@@ -1,0 +1,64 @@
+﻿@model List<Subscribe>
+@{
+    ViewData["Title"] = "Subscribes";
+    int count = 1;
+
+}
+<div class="container mt-3">
+    <div class="d-flex justify-content-between">
+        <h2>Subscribers</h2>
+        
+    </div>
+    <div class="table-responsive pt-3">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Settings
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var subscriber in Model)
+                {
+                    <tr>
+                        <td>
+
+                            @count
+                        </td>
+                        <td>
+                            @subscriber.Email
+
+                        </td>
+                        <td>
+                            
+                            <form style="display:inline-block" method="post" asp-action="Delete" asp-route-id="@subscriber.Id">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+
+                    </tr>
+
+                    count++;
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

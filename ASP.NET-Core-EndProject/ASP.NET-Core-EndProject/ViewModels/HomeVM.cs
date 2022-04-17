@@ -17,5 +17,6 @@ namespace ASP.NET_Core_EndProject.ViewModels
         public List<Event> Events { get; set; }
         public Testimonial Testimonial { get; set; }
         public List<Blog> Blogs { get; set; }
+        public Subscribe Subscribe { get; set; }
     }
 }
